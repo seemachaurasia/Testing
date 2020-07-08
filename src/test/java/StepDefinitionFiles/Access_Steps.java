@@ -195,6 +195,7 @@ public class Access_Steps extends UIBase {
 	    ptr.readTextImage();
 		
 		System.out.println("testing for git");
+		System.out.println("testing for git by kapil");
 	}
 
 	@Then("^close browsers$")
