@@ -191,8 +191,10 @@ public class Access_Steps extends UIBase {
 	
 	@Then("^Verify that user is able to see all the fields$")
 	public void verify_that_user_is_able_to_see_all_the_fields() throws Throwable {
-//	    ap.pagesync(6);
-//	    ptr.readTextImage();
+	    ap.pagesync(6);
+	    ptr.readTextImage();
+		
+		System.out.println("testing for git");
 	}
 
 	@Then("^close browsers$")
