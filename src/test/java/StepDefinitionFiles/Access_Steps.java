@@ -196,6 +196,7 @@ public class Access_Steps extends UIBase {
 		
 		System.out.println("testing for git");
 		System.out.println("testing for git by kapil");
+		System.out.println("testing for git by kapil");
 	}
 
 	@Then("^close browsers$")
