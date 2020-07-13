@@ -31,32 +31,42 @@ import UtillFiles.Buffer;
 import UtillFiles.Constants;
 import UtillFiles.ProcessTestRequest;
 
-
-
-
-public class UIBase  {
+public class UIBase {
 	public static JavascriptExecutor JSExec;
-	public static ProcessTestRequest ptr;
+	//public static ProcessTestRequest ptr;
 	public static WebDriver driver;
 	
 	public static String getRandom() {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
-		
+
 		int minutes = calendar.get(Calendar.MINUTE);
 		int seconds = calendar.get(Calendar.SECOND);
-		
-		return String.valueOf(minutes) + String.valueOf(seconds);
-		}
 
+		return String.valueOf(minutes) + String.valueOf(seconds);
+	}
+     
 	@BeforeMethod
 	public void initialization() {
-	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+ Constants.CHROME_PATH);
-	//String downloadFilepath = "/Testing/src/test/resources/DownloadedFiles";
-	
-	//options.addArguments("--headless");
-	
-	String downloadFilepath = System.getProperty("user.dir")+"\\src\\test\\resources\\DownloadedFiles\\";
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + Constants.CHROME_PATH);
+		// String downloadFilepath = "/Testing/src/test/resources/DownloadedFiles";
+
+		// options.addArguments("--headless");
+
+		//String downloadpath = System.getProperty("user.dir") + "/" + "DownloadedFiles";
+		//File downloadPathFile = new File(System.getProperty("user.dir") + "\\src\\test\\resources\\DownloadedFiles");
+		String downloadFilepath = System.getProperty("user.dir") + "\\src\\test\\resources\\DownloadedFiles";
+		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+		chromePrefs.put("profile.default_content_settings.popups", 0);
+		chromePrefs.put("download.default_directory", downloadFilepath);
+		chromePrefs.put("download.directory_upgrade", true);
+		chromePrefs.put("browser.set_download_behavior", "allow");
+		chromePrefs.put("download.prompt_for_download", false);
+
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", chromePrefs);
+		driver = new ChromeDriver(options);
+
 //    HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 //    chromePrefs.put("profile.default_content_settings.popups", 0);
 //    chromePrefs.put("download.default_directory", "D:\\");
@@ -66,57 +76,50 @@ public class UIBase  {
 //	  
 //    driver = new ChromeDriver(options);
 
-    DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("test-type");
-    capabilities.setCapability("chrome.binary", downloadFilepath);
-    capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-    //options.merge(capabilities);
-    driver = new ChromeDriver(capabilities);
-   
-    
+//    DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+//    ChromeOptions options = new ChromeOptions();
+//   
+//    capabilities.setCapability("chrome.binary", downloadFilepath);
+//    capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//    //options.merge(capabilities);
+//    driver = new ChromeDriver(capabilities);
+
 //  DesiredCapabilities caps =DesiredCapabilities.chrome();
 //  caps.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 //  caps.setCapability(ChromeOptions.CAPABILITY, options);
-    
-	/*
-	 * Map<String, Object> prefs = new HashMap<String, Object>();
-	 * prefs.put("profile.default_content_settings.popups", 0);
-	 * prefs.put("download.default_directory",
-	 * "C:\\Users\\seema.chaurasia\\Desktop\\Workplace\\Testing\\src\\test\\resources\\DownloadedFiles"
-	 * ); ChromeOptions options = new ChromeOptions();
-	 * options.setExperimentalOption("prefs", prefs);
-	 */
-	
-	
-	
-	 //driver = new ChromeDriver(options);
-	
-	driver.manage().window().maximize();
-	driver.manage().deleteAllCookies();
-	
-	
-	driver.navigate().to("https://clerk.clevelandcountyok.com/web/user/disclaimer");
+
+		/*
+		 * Map<String, Object> prefs = new HashMap<String, Object>();
+		 * prefs.put("profile.default_content_settings.popups", 0);
+		 * prefs.put("download.default_directory",
+		 * "C:\\Users\\seema.chaurasia\\Desktop\\Workplace\\Testing\\src\\test\\resources\\DownloadedFiles"
+		 * ); ChromeOptions options = new ChromeOptions();
+		 * options.setExperimentalOption("prefs", prefs);
+		 */
+
+		// driver = new ChromeDriver(options);
+
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+
+		//driver.navigate().to("https://clerk.clevelandcountyok.com/web/user/disclaimer");
 	}
 
 	@AfterMethod
 	public String getMethodName(ITestResult result) {
-	//driver.quit();
-	return result.getMethod().getMethodName();
+		// driver.quit();
+		return result.getMethod().getMethodName();
 	}
 
 	@AfterSuite
 	public void closeBrowser() throws IOException {
-	Reporter.loadXMLConfig(Constants.EXTENT_CONFIG_PATH);
-	Reporter.setSystemInfo("Author", " QA AUTOMATION TEAM");
-	Reporter.setSystemInfo("Project", " Analytics");
+		Reporter.loadXMLConfig(Constants.EXTENT_CONFIG_PATH);
+		Reporter.setSystemInfo("Author", " QA AUTOMATION TEAM");
+		Reporter.setSystemInfo("Project", " Analytics");
 //	File htmlFile = new
 //			 File("\\target\\cucumber-reports\\Automation_Report.html");
 //			 Desktop.getDesktop().browse(htmlFile.toURI());
-	
-	}
 
-	
-	
+	}
 
 }
