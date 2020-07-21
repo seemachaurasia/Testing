@@ -40,7 +40,7 @@ public class Access_Steps extends UIBase {
 	@Given("^Navigate to \"([^\"]*)\" Site$")
 	public void navigate_to_Site(String arg1) throws Throwable {
 		Reporter.addStepLog("site launched successfully");
-		System.out.println("*************************************");
+		System.out.println("*************************************!!!!!!!!!!!!!!!!!!!!");
 	}
 
 	@Given("^Click on ACCEPT link$")
