@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Buffer {
+	String path = System.getProperty("user.dir");
 
 	static String fileName = "C:\\Users\\seema.chaurasia\\Desktop\\Workplace\\Testing\\src\\main\\resources\\BufferStorage.properties";
 

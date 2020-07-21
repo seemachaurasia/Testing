@@ -2,6 +2,8 @@ package StepDefinitionFiles;
 
 
 
+import org.openqa.selenium.JavascriptExecutor;
+
 import com.cucumber.listener.Reporter;
 
 import BaseFile.UIBase;
@@ -10,6 +12,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class LoginTest extends UIBase{
+	
+	JavascriptExecutor js = ((JavascriptExecutor) driver);
 	@Given("^login to the google app$")
 	public void login_to_the_google_app() throws Throwable {
 		Reporter.addStepLog("Login to application");

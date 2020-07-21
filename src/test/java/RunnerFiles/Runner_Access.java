@@ -12,7 +12,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.CucumberFeatureWrapper;
 import cucumber.api.testng.TestNGCucumberRunner;
 
-@CucumberOptions(features = "C:\\Users\\seema.chaurasia\\Desktop\\Workplace\\Testing\\src\\test\\java\\Feature_Files\\DisclamerForm.feature", glue = { "StepDefinitionFiles" }, tags = { "@test" },plugin = {
+@CucumberOptions(features = ".\\src\\test\\java\\Feature_Files\\DisclamerForm.feature", glue = { "StepDefinitionFiles" }, tags = { "@test" },plugin = {
 		"pretty",
 		"com.cucumber.listener.ExtentCucumberFormatter:" },
 monochrome = true

@@ -15,4 +15,4 @@ And close browsers
 
 Examples:
 |sdate			|edate	              | value                  |
-|02/02/2020	|current date|State Tax Lien, Release State Tax Lien, Federal Tax Lien, Release Federal Tax Lien|
+|01/01/1985	|12/31/1990| Federal Tax Lien|

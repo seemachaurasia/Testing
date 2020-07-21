@@ -102,7 +102,7 @@ public class UIBase {
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 
-		//driver.navigate().to("https://clerk.clevelandcountyok.com/web/user/disclaimer");
+	driver.navigate().to("https://clerk.clevelandcountyok.com/web/user/disclaimer");
 	}
 
 	@AfterMethod
